@@ -38,6 +38,7 @@ namespace Cafe::Environment
 #endif
 	}
 
+	// TODO: 不使用单例，考虑放弃缓存
 	class CAFE_PUBLIC EnvironmentVariableManager final
 	{
 	public:

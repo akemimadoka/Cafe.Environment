@@ -61,7 +61,8 @@ std::optional<Encoding::StringView<Encoding::CodePage::Utf8>> EnvironmentVariabl
 	return iter->second;
 #else
 	Encoding::String<Encoding::CodePage::Utf8> mayBeKeyStorage;
-	const auto keyValue = key.IsNullTerminated() ? key.GetData() : (mayBeKeyStorage = key).GetData();
+	const auto keyValue = reinterpret_cast<const char*>(
+	    key.IsNullTerminated() ? key.GetData() : (mayBeKeyStorage = key).GetData());
 	const auto value = std::getenv(keyValue);
 	if (!value)
 	{
@@ -114,9 +115,10 @@ void EnvironmentVariableManager::SetValue(
 #else
 	Encoding::String<Encoding::CodePage::Utf8> mayBeKeyStorage;
 	Encoding::String<Encoding::CodePage::Utf8> mayBeValueStorage;
-	const auto keyValue = key.IsNullTerminated() ? key.GetData() : (mayBeKeyStorage = key).GetData();
-	const auto valueValue =
-	    value.IsNullTerminated() ? value.GetData() : (mayBeValueStorage = value).GetData();
+	const auto keyValue = reinterpret_cast<const char*>(
+	    key.IsNullTerminated() ? key.GetData() : (mayBeKeyStorage = key).GetData());
+	const auto valueValue = reinterpret_cast<const char*>(
+	    value.IsNullTerminated() ? value.GetData() : (mayBeValueStorage = value).GetData());
 
 	if (setenv(keyValue, valueValue, 1) < 0)
 	{
@@ -142,7 +144,8 @@ void EnvironmentVariableManager::Remove(Encoding::StringView<Encoding::CodePage:
 	}
 #else
 	Encoding::String<Encoding::CodePage::Utf8> mayBeKeyStorage;
-	const auto keyValue = key.IsNullTerminated() ? key.GetData() : (mayBeKeyStorage = key).GetData();
+	const auto keyValue = reinterpret_cast<const char*>(
+	    key.IsNullTerminated() ? key.GetData() : (mayBeKeyStorage = key).GetData());
 
 	if (unsetenv(keyValue) < 0)
 	{

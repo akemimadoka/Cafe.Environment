@@ -37,32 +37,4 @@ namespace Cafe::Environment
 		return CAFE_UTF8_SV("\n");
 #endif
 	}
-
-	// TODO: 不使用单例，考虑放弃缓存
-	class CAFE_PUBLIC EnvironmentVariableManager final
-	{
-	public:
-		EnvironmentVariableManager(EnvironmentVariableManager const&) = delete;
-		EnvironmentVariableManager& operator=(EnvironmentVariableManager const&) = delete;
-
-		std::optional<Encoding::StringView<Encoding::CodePage::Utf8>>
-		GetValue(Encoding::StringView<Encoding::CodePage::Utf8> const& key) const;
-
-		void SetValue(Encoding::StringView<Encoding::CodePage::Utf8> const& key,
-		              Encoding::StringView<Encoding::CodePage::Utf8> const& value);
-
-		void Remove(Encoding::StringView<Encoding::CodePage::Utf8> const& key);
-
-		void FlushCache(Encoding::StringView<Encoding::CodePage::Utf8> const& key = {}) const;
-
-	private:
-		mutable std::unordered_map<Encoding::String<Encoding::CodePage::Utf8>,
-		                           std::optional<Encoding::String<Encoding::CodePage::Utf8>>>
-		    m_Cache;
-
-		EnvironmentVariableManager() = default;
-
-	public:
-		static EnvironmentVariableManager& GetInstance();
-	};
 } // namespace Cafe::Environment

@@ -1,13 +1,13 @@
 set(SOURCE_FILES
-    src/Environment.cpp)
+    src/Cafe/Misc/Environment.cpp)
 
 set(HEADERS
-    include/Cafe/Misc/Environment.h)
+    src/Cafe/Misc/Environment.h)
 
 add_library(Cafe.Environment ${SOURCE_FILES} ${HEADERS})
 
 target_include_directories(Cafe.Environment PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
     $<INSTALL_INTERFACE:include>)
 
 target_link_libraries(Cafe.Environment
@@ -21,7 +21,7 @@ endif()
 install(TARGETS Cafe.Environment
     EXPORT Environment)
 
-install(DIRECTORY include/
+install(DIRECTORY src/
     TYPE INCLUDE
     FILES_MATCHING PATTERN "*.h")
 

@@ -1,8 +1,5 @@
-#include <Cafe/ErrorHandling/CommonExceptions.h>
 #include <Cafe/Misc/Environment.h>
 #include <Cafe/Misc/Scope.h>
-#include <Cafe/TextUtils/Format.h>
-#include <Cafe/TextUtils/Misc.h>
 
 #ifdef _WIN32
 #	include <Winnls.h>

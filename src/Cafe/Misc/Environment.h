@@ -7,9 +7,6 @@
 #include <Cafe/Encoding/Strings.h>
 #include <Cafe/Misc/Export.h>
 
-#include <optional>
-#include <unordered_map>
-
 namespace Cafe::Environment
 {
 #ifdef _WIN32

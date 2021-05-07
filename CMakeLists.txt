@@ -19,7 +19,7 @@ target_include_directories(Cafe.Environment PUBLIC
     $<INSTALL_INTERFACE:include>)
 
 target_link_libraries(Cafe.Environment
-    PUBLIC CONAN_PKG::Cafe.Encoding CONAN_PKG::Cafe.TextUtils)
+    PUBLIC CONAN_PKG::Cafe.Encoding)
 
 install(TARGETS Cafe.Environment
     EXPORT Environment)

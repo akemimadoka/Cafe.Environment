@@ -18,7 +18,7 @@ class CafeEnvironmentConan(ConanFile):
     options = {opt[0]: opt[1] for opt in Options}
     default_options = {opt[0]: opt[2] for opt in Options}
 
-    requires = "Cafe.Encoding/0.1", "Cafe.TextUtils/0.1"
+    requires = "Cafe.Encoding/0.1"
 
     generators = "cmake"
 

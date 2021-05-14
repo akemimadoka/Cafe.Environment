@@ -21,6 +21,8 @@ target_include_directories(Cafe.Environment PUBLIC
 target_link_libraries(Cafe.Environment
     PUBLIC CONAN_PKG::Cafe.Encoding)
 
+AddCafeSharedFlags(Cafe.Environment)
+
 install(TARGETS Cafe.Environment
     EXPORT Environment)
 

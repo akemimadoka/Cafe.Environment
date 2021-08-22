@@ -2,9 +2,7 @@
 #include <Cafe/Misc/Scope.h>
 
 #ifdef _WIN32
-#	include <Winnls.h>
-#	include <windef.h>
-#	include <winbase.h>
+#	include <Windows.h>
 #else
 #	include <cstdlib>
 #endif

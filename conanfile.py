@@ -27,7 +27,7 @@ class CafeEnvironmentConan(ConanFile):
 
     def requirements(self):
         if self.options.CAFE_INCLUDE_TESTS:
-            self.requires("catch2/3.0.0@catchorg/stable", private=True)
+            self.requires("catch2/3.2.0", private=True)
 
     def configure_cmake(self):
         cmake = CMake(self)
